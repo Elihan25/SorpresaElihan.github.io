@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        .content {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bienvenido a tu página especial</h2>
+    <p>Ingresa tu nombre para ver tu mensaje personalizado:</p>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre...">
+    <button onclick="mostrarMensaje()">Ingresar</button>
+    
+    <div id="mensaje" class="content hidden">
+        <h3 id="titulo"></h3>
+        <p id="texto"></p>
+        <button onclick="mostrarImagen()">Mostrar Imagen</button>
+        <button onclick="mostrarSorpresa()">Mostrar Sorpresa</button>
+        <div id="imagen" class="hidden">
+            <img src="https://via.placeholder.com/300" alt="Imagen sorpresa">
+        </div>
+        <p id="sorpresa" class="hidden">¡Esto es un mensaje especial para ti! 😊</p>
+    </div>
+    
+    <script>
+        function mostrarMensaje() {
+            let nombre = document.getElementById("nombre").value;
+            let mensaje = document.getElementById("mensaje");
+            let titulo = document.getElementById("titulo");
+            let texto = document.getElementById("texto");
+            
+            if (nombre.trim() !== "") {
+                titulo.innerText = "Hola, " + nombre + "!";
+                texto.innerText = "Bienvenido a tu espacio especial. Aquí hay algo para ti.";
+                mensaje.classList.remove("hidden");
+            } else {
+                alert("Por favor, ingresa tu nombre.");
+            }
+        }
+
+        function mostrarImagen() {
+            document.getElementById("imagen").classList.toggle("hidden");
+        }
+
+        function mostrarSorpresa() {
+            document.getElementById("sorpresa").classList.toggle("hidden");
+        }
+    </script>
+</body>
+</html>
